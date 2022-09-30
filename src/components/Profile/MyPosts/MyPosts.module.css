@@ -1,0 +1,31 @@
+.addPostArea{
+    width: 1040px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+    margin-bottom: 60px;
+
+}
+.addPostButton{
+position: absolute;
+bottom: -45px;
+right: 0;
+background-color: rgb(216, 103, 4) ;
+border: 2px solid rgb(216, 103, 4);
+border-radius: 10px;
+width: 115px;
+height: 35px;
+}
+textarea{
+    background-color: transparent;
+    resize: none;
+    width: 1010px;
+    height: 80px;
+    border-radius: 10px;
+    color:rgb(216, 103, 4);
+    border: 2px solid rgb(216, 103, 4);
+    font-size: 18px;
+    padding: 10px 15px;
+    outline: none;
+}

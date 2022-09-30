@@ -1,0 +1,139 @@
+.dialogsContainer{
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+}
+.dialogsNames{
+    margin: 0 15px 0 15px;
+    border: 2px solid rgb(216, 103, 4);
+    border-radius: 10px;
+    padding: 15px;
+    height: 400px;
+}
+.dialogsMessages{
+    margin: 0 15px 0 15px;
+    border: 2px solid rgb(216, 103, 4);
+    border-radius: 10px;
+    padding: 15px;
+    height: 400px;
+    position: relative;
+}
+.dialogMessage1{
+    background-color: rgb(216, 103, 4);
+    border: 2px solid rgb(131, 129, 127);
+    border-radius: 10px 10px 0px 10px;
+    padding: 15px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 400px;
+    position: relative;
+    left: 218px;
+}
+.dialogMessage1::before{
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 10px;
+    bottom: -2px;
+    right: -18px;
+    background-color: rgb(216, 103, 4);
+    border-bottom: 2px solid rgb(131, 129, 127);
+}
+.dialogMessage1::after{
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    border-radius: 0 0 0 100%;
+    bottom: -2px;
+    right: -18px;
+    background-color: rgb(69, 71, 72);
+    border-bottom: 2px solid rgb(131, 129, 127);
+    border-left: 2px solid rgb(131, 129, 127);
+}
+.dialogMessage2{
+    background-color: rgb(131, 129, 127);
+    border: 2px solid rgb(216, 103, 4);
+    border-radius: 10px 10px 10px 0;
+    padding: 15px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 400px;
+    position: relative;
+    right: -68px;
+}
+
+.dialogMessage2::before{
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 10px;
+    bottom: -2px;
+    left: -18px;
+    background-color: rgb(131, 129, 127);
+    border-bottom: 2px solid rgb(216, 103, 4);
+}
+.dialogMessage2::after{
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    border-radius: 0 0 100% 0;
+    bottom: -2px;
+    left: -18px;
+    background-color: rgb(69, 71, 72);
+    border-bottom: 2px solid rgb(216, 103, 4);
+    border-right: 2px solid rgb(216, 103, 4);
+}
+
+.dialogName{
+    border: 2px solid rgb(216, 103, 4);
+    background-color: rgb(216, 103, 4);
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color:rgb(71, 68, 68);
+    font-size: 15px;
+
+}
+.dialogNamesActive{
+    border: 4px solid rgb(115, 34, 2);
+    background-color:  rgb(243, 140, 38);
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: rgb(115, 34, 2);
+    font-size: 18px;
+}
+.dialogImg img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid rgb(115, 34, 2);
+    margin-right: 5px ;
+}
+.chatImg1 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: absolute;
+    right: -70px;
+    bottom: -10px;
+}
+.chatImg2 img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    position: absolute;
+    left: -70px;
+    bottom:-10px;
+}

@@ -1,0 +1,35 @@
+.post {
+    width: 1006px;
+    background-color: rgb(131, 129, 127);
+    border: 2px solid rgb(216, 103, 4);
+    border-radius: 10px;
+    padding: 15px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    position: relative;
+}
+.post img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+}
+.messageArea{
+    margin: 8px;
+}
+.likesArea{
+background-image: url(https://www.vectorkhazana.com/assets/images/products/Love_Heart.png);
+background-size: contain;
+font-size: 13px;
+font-weight: bold;
+color: rgb(160, 20, 20);
+display: flex;
+align-items: center;
+justify-content: center;
+width: 30px;
+height: 30px;
+position: absolute;
+bottom: 0px;
+right: 0px;
+}
