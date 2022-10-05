@@ -11,6 +11,8 @@ import Settings from './components/Settings/Settings';
 
 type globalType = {
   state: statePropsType
+  addPost:(text:string)=>void
+
 }
 export type statePropsType = {
   profile:profilePropsType
@@ -51,7 +53,7 @@ const App = (props:globalType) => {
         <Navbar sidebarData={props.state.sidebar.sidebarData}/>
         <div className='app-wrapper-content'>
           <Route path='/dialogs' render={()=><Dialogs DialogNamesData={props.state.dialogs.DialogNamesData} DialogMessagesData={props.state.dialogs.DialogMessagesData}/>} />
-          <Route path='/profile' render={()=><Profile PostsData={props.state.profile.PostsData}/>} />
+          <Route path='/profile' render={()=><Profile PostsData={props.state.profile.PostsData} addPost={props.addPost}/>} />
           <Route path='/news' render={()=><News/>} />
           <Route path='/music' render={()=><Music/>} />
           <Route path='/settings' render={()=><Settings/>} />

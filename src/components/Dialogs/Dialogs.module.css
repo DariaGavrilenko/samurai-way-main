@@ -14,8 +14,9 @@
     border: 2px solid rgb(216, 103, 4);
     border-radius: 10px;
     padding: 15px;
-    height: 400px;
+    /* height: 400px; */
     position: relative;
+    width: 730px;
 }
 .dialogMessage1{
     background-color: rgb(216, 103, 4);
@@ -136,4 +137,21 @@
     position: absolute;
     left: -70px;
     bottom:-10px;
+}
+.dialogsTextarea textarea{
+    margin-top: 50px;
+    margin-left: 45px;
+    margin-bottom: 50px;
+    width:600px ;
+}
+.addPostButton {
+    position: absolute;
+    bottom: 20px;
+    right: 65px;
+    background-color: rgb(216, 103, 4);
+    border: 2px solid rgb(216, 103, 4);
+    border-radius: 10px;
+    width: 115px;
+    height: 35px;
+    font-size: large;
 }
