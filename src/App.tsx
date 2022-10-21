@@ -8,11 +8,16 @@ import Navbar from './components/Nav/Nav';
 import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
+import { ActionsTypes } from './redux/state';
+
 
 type globalType = {
   state: statePropsType
-  addPost:(text:string)=>void
-
+  // addPost:()=>void
+  // updateNewPostText:(text:string)=>void
+  // addMessage:()=>void
+  // updateMessageText:(text:string)=>void
+  dispatch:(action:ActionsTypes)=>void
 }
 export type statePropsType = {
   profile:profilePropsType
@@ -24,6 +29,7 @@ export type sidebarDataPropsType = {
 }
 export type profilePropsType = {
   PostsData:Array<PostsDataPropsType>
+  newPostText:string
 }
 export type PostsDataPropsType = {
   id:number
@@ -33,6 +39,7 @@ export type PostsDataPropsType = {
 export type dialogPropsType={
   DialogNamesData: Array<DialogNamesDataPropsType>
   DialogMessagesData: Array<DialogMessagesDataPropsType >
+  DialogMessageText:string
 }
 export type DialogNamesDataPropsType = {
   id: number
@@ -52,8 +59,11 @@ const App = (props:globalType) => {
         <Header />
         <Navbar sidebarData={props.state.sidebar.sidebarData}/>
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' render={()=><Dialogs DialogNamesData={props.state.dialogs.DialogNamesData} DialogMessagesData={props.state.dialogs.DialogMessagesData}/>} />
-          <Route path='/profile' render={()=><Profile PostsData={props.state.profile.PostsData} addPost={props.addPost}/>} />
+          <Route path='/dialogs' render={() => <Dialogs dispatch={props.dispatch}
+            DialogNamesData={props.state.dialogs.DialogNamesData}
+            DialogMessagesData={props.state.dialogs.DialogMessagesData}
+            DialogMessageText={props.state.dialogs.DialogMessageText} />} />
+          <Route path='/profile' render={()=><Profile ProfileData={props.state.profile} dispatch={props.dispatch}/>} />
           <Route path='/news' render={()=><News/>} />
           <Route path='/music' render={()=><Music/>} />
           <Route path='/settings' render={()=><Settings/>} />
@@ -64,3 +74,5 @@ const App = (props:globalType) => {
 }
 
 export default App;
+//addPost={props.addPost} updateNewPostText={props.updateNewPostText}
+ //updateMessageText={props.updateMessageText}  addMessage={props.addMessage}
