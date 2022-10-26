@@ -1,6 +1,7 @@
 
 import {ActionsTypes, statePropsType} from '../../App'
 import { addMessageAC, updateMessageTextAC } from '../../redux/dialogsReducer'
+import StoreContext from '../../StoreContext'
 import Dialogs from './Dialogs'
 
 
@@ -11,22 +12,27 @@ type DialogsType = {
 }
 
 
-function DialogsContainer(props:DialogsType) {
-
-    const sentMessage = () => {
-            // props.addMessage()
-            props.dispatch(addMessageAC())
-        }
-
-   const updateMessageText =(text:string)=>{
-        // props.updateMessageText(dialogMessageRef.current?.value)
-        props.dispatch(updateMessageTextAC(text))
-   } 
+function DialogsContainer() {
 
 
-   
+
+
+
     return (
-        <Dialogs state={props.state.dialogs} addMessage={sentMessage} updateMessageText={updateMessageText}/>
+        <StoreContext.Consumer>
+            {(store) => {
+                const sentMessage = () => {
+                    // props.addMessage()
+                    store.dispatch(addMessageAC())
+                }
+
+                const updateMessageText = (text: string) => {
+                    // props.updateMessageText(dialogMessageRef.current?.value)
+                    store.dispatch(updateMessageTextAC(text))
+                }
+                return <Dialogs state={store.getState().dialogs} addMessage={sentMessage} updateMessageText={updateMessageText} />
+            }}
+        </StoreContext.Consumer>
     )
 }
 

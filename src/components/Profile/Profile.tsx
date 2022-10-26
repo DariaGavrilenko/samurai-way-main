@@ -5,12 +5,12 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 export type ProfileType = globalType
 
-const Profile = (props:ProfileType) => {
+const Profile = () => {
     return (
 
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPostsContainer state={props.state} dispatch={props.dispatch}/>
+            <MyPostsContainer />
         </div>
     )
 }

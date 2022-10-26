@@ -12,9 +12,10 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import { AddMessageActiveType, UpdateMessageTextActiveType } from './redux/dialogsReducer';
 import { AddPostActiveType, UpdateNewPostTextActiveType } from './redux/profileReducer';
+import StoreContext from './StoreContext';
+
 
 export type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | UpdateMessageTextActiveType | AddMessageActiveType
-
 
 export type globalType = {
   state: statePropsType
@@ -53,16 +54,20 @@ export type DialogMessagesDataPropsType = {
  img:string 
 }
 
-const App = (props:globalType) => {
+const App = () => {
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <Navbar sidebarData={props.state.sidebar.sidebarData}/>
+        <StoreContext.Consumer>
+          {
+          (store)=><Navbar sidebarData={store.getState().sidebar.sidebarData} />
+          }
+        
+        </StoreContext.Consumer>
         <div className='app-wrapper-content'>
-          <Route path='/dialogs' render={() => <DialogsContainer dispatch={props.dispatch}
-           state={props.state} />} />
-          <Route path='/profile' render={()=><Profile state={props.state} dispatch={props.dispatch}/>} />
+          <Route path='/dialogs' render={() => <DialogsContainer />} />
+          <Route path='/profile' render={()=><Profile />} />
           <Route path='/news' render={()=><News/>} />
           <Route path='/music' render={()=><Music/>} />
           <Route path='/settings' render={()=><Settings/>} />
@@ -73,3 +78,10 @@ const App = (props:globalType) => {
 }
 
 export default App;
+
+
+//props:globalType
+//sidebarData={props.state.sidebar.sidebarData}
+//dispatch={props.dispatch}
+ // state={props.state} 
+//state={props.state} dispatch={props.dispatch}
