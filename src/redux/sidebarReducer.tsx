@@ -1,7 +1,21 @@
 import { sidebarDataPropsType } from "../App"
-import { ActionsTypes } from "./state"
+import lily from './lily.jpeg'
+import sam from './sam.jpeg'
+import mark from './mark.jpeg'
+import dafna from './dafna.jpeg' 
+import { AddPostActiveType, UpdateNewPostTextActiveType } from "./profileReducer"
+import { AddMessageActiveType, UpdateMessageTextActiveType } from "./dialogsReducer"
+type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | UpdateMessageTextActiveType | AddMessageActiveType
 
-const sidebarReducer =(state:sidebarDataPropsType,action:ActionsTypes)=>{
+const initialState = {
+    sidebarData: [
+        { id: 1, name: 'Lily', img: lily, },
+        { id: 2, name: 'Sam', img: sam },
+        { id: 3, name: 'Mark', img: mark },
+        { id: 4, name: 'Dafna', img: dafna }]
+}
+
+const sidebarReducer =(state:sidebarDataPropsType = initialState,action:ActionsTypes)=>{
 return state
 }
 

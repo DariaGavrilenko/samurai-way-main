@@ -1,25 +1,17 @@
-import {PostsDataPropsType, profilePropsType} from '../../App'
-import { ActionsTypes } from '../../redux/state'
-import MyPosts from './MyPosts/MyPosts'
+import {globalType, PostsDataPropsType, profilePropsType, statePropsType} from '../../App'
+import MyPostsContainer from './MyPosts/MyPostsContainer'
 import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 
-export type ProfileType = {
-    ProfileData:profilePropsType
-    // PostsData:Array<PostsDataPropsType>
-    // addPost:()=>void
-    // updateNewPostText:(text:string)=>void
-    dispatch:(action:ActionsTypes)=>void
-}
+export type ProfileType = globalType
 
 const Profile = (props:ProfileType) => {
     return (
 
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts ProfileData={props.ProfileData} dispatch={props.dispatch}/>
+            <MyPostsContainer state={props.state} dispatch={props.dispatch}/>
         </div>
     )
 }
 export default Profile
-//addPost={props.addPost} updateNewPostText={props.updateNewPostText}

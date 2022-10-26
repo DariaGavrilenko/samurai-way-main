@@ -7,28 +7,33 @@ import { ProfileType } from '../Profile'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
-type MyPostsType = ProfileType
+type MyPostsType = {
+    addPost:()=>void
+    updateNewPostText:(text:string)=>void
+    state: profilePropsType
+}
 
-const MyPosts = (props:ProfileType) => {
+const MyPosts = (props:MyPostsType ) => {
  let postMessageRef = React.createRef<HTMLTextAreaElement>()
- const addMessage = ()=>{ 
+
+
+ const onClickHandler = ()=>{ 
     if(postMessageRef.current?.value){
-    // props.addPost()
-    props.dispatch(addPostAC())
+    props.addPost()
 }}
-const updateNewPostText = (e:ChangeEvent<HTMLTextAreaElement>) =>{
-//  props.updateNewPostText(postMessageRef.current?.value ? postMessageRef.current.value : '' )
-// let text = postMessageRef.current?.value ? postMessageRef.current.value : '' 
- props.dispatch(updateNewPostTextAC(postMessageRef.current?.value ? postMessageRef.current.value : ''))
+
+
+const onChangehandler = (e:ChangeEvent<HTMLTextAreaElement>) =>{
+ props.updateNewPostText(postMessageRef.current?.value ? postMessageRef.current.value : '' )
 } 
 
-    const postRendering = props.ProfileData.PostsData.map(post => <Post  message={post.message} likes={post.likes}/>)
+    const postRendering = props.state.PostsData.map(post => <Post  message={post.message} likes={post.likes}/>)
     return (
         <div className={s.posts}>
             my post
             <div className={s.addPostArea}>
-                <textarea  ref={postMessageRef} placeholder='Your message...' value={props.ProfileData.newPostText} onChange={updateNewPostText} ></textarea>
-                <button className={s.addPostButton} onClick={addMessage}>add posts</button>
+                <textarea  ref={postMessageRef} placeholder='Your message...' value={props.state.newPostText} onChange={onChangehandler} ></textarea>
+                <button className={s.addPostButton} onClick={onClickHandler}>add posts</button>
             </div>
             <div>new post
                 {postRendering}
