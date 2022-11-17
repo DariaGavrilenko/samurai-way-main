@@ -1,4 +1,5 @@
-import { DialogMessagesDataPropsType } from '../../../App'
+
+import { DialogMessagesDataPropsType } from '../../../redux/dialogsReducer'
 import s from './../Dialogs.module.css'
 
 

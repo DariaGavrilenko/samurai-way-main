@@ -1,14 +1,32 @@
+import { profileType } from '../../../redux/profileReducer'
 import s from './ProfileInfo.module.css'
 
+export type ProfileInfoPropsType ={
+    profileInfo: profileType | null
+}
 
-function ProfileInfo() {
+function ProfileInfo(props: ProfileInfoPropsType) {
     return (
         <div>
             <div className={s.contentImg}>
                 <img src="https://www.ie.edu/insights/wp-content/uploads/2017/01/Lean-Cities.jpg" alt="" />
             </div>
-            <div className={s.ava}>
-                ava + discri
+            <div className={s.usersInformation}>
+                <div className={s.ava}><img src={props.profileInfo?.photos.large ? props.profileInfo?.photos.large : "https://i.pinimg.com/564x/07/24/ac/0724acaf0726777b170d09d3774cdcb0.jpg"} alt="usersPhoto" /></div>
+                <div className={s.information}>
+                    <span>Work status: {props.profileInfo?.lookingForAJob ? 'looking for job' : ' work now'}</span>
+                    <span>A job description: {props.profileInfo?.lookingForAJobDescription} </span>
+                    <ul>My contacts:
+                        <li>github: {props.profileInfo?.contacts.github}</li>
+                        <li>vk: {props.profileInfo?.contacts.vk}</li>
+                        <li>facebook: {props.profileInfo?.contacts.facebook}</li>
+                        <li>instagram: {props.profileInfo?.contacts.instagram}</li>
+                        <li>twitter: {props.profileInfo?.contacts.twitter}</li>
+                        <li>website: {props.profileInfo?.contacts.website}</li>
+                        <li>youtube: {props.profileInfo?.contacts.youtube}</li>
+                        <li>mainLink: {props.profileInfo?.contacts.mainLink}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     )
@@ -16,3 +34,22 @@ function ProfileInfo() {
 
 
 export default ProfileInfo
+
+// userId: number
+// lookingForAJob: boolean
+// lookingForAJobDescription: string
+// fullName: string
+// contacts:{
+// github: string
+// vk: string
+// facebook: string
+// instagram: string
+// twitter: string
+// website: string
+// youtube: string
+// mainLink: string
+// }
+// photos:{
+// small: string | null
+// large: string | null
+// }

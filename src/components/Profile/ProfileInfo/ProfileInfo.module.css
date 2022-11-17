@@ -6,11 +6,39 @@
     width: 1040px;
     height: 200px;
   }
-  .ava{
+  /* .ava{
     width: 1040px;
     height: 200px;
     border: 2px solid rgb(216, 103, 4);
     border-radius: 10px;
     margin-top: 10px;
 
-  }
+  } */
+    .usersInformation {
+      width: 1040px;
+      min-height: 200px;
+      border: 2px solid rgb(216, 103, 4);
+      border-radius: 10px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .information {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-weight: bold;
+      font-size: large;
+      width: 350px;
+      border: 2px solid rgb(216, 103, 4);
+      border-radius: 10px;
+      word-break: break-all;
+      padding-left: 50px;
+      background-color: rgb(131, 129, 127);
+    }
+    .ava img{
+      border-radius: 10px;
+      width: 300px;
+      height: 300px;
+    }

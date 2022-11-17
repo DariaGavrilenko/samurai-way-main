@@ -1,6 +1,6 @@
 
 import React, { ChangeEvent } from 'react'
-import { dialogPropsType} from '../../App'
+import { dialogPropsType } from '../../redux/dialogsReducer'
 import s from './Dialogs.module.css'
 import DialogsMessage from './DialogsMessage/DialogMessage'
 import DialogsNames from './DialogsName/DialogName'
@@ -27,8 +27,8 @@ function Dialogs(props:DialogsType) {
     
    } 
 
-    const DialogsNamesRendering = props.state.DialogNamesData?.map(dn => <DialogsNames img={dn.img} name={dn.name} id={dn.id} />)
-    const DialogMessagesRendering = props.state.DialogMessagesData?.map(dm => <DialogsMessage message={dm.message} id={dm.id} img={dm.img} />)
+    const DialogsNamesRendering = props.state.DialogNamesData?.map((dn,index) => <DialogsNames img={dn.img} name={dn.name} id={dn.id} key={index}/>)
+    const DialogMessagesRendering = props.state.DialogMessagesData?.map((dm,index) => <DialogsMessage message={dm.message} id={dm.id} img={dm.img} key={index} />)
     return (
         <div>
             <div className={s.dialogsContainer}>

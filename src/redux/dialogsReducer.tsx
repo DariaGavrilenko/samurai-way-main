@@ -1,15 +1,34 @@
-import { dialogPropsType } from '../App'
+
 import lily from './lily.jpeg'
 import sam from './sam.jpeg'
 import mark from './mark.jpeg'
 import dafna from './dafna.jpeg' 
 import main from './main.jpeg'
-import { AddPostActiveType, UpdateNewPostTextActiveType } from "./profileReducer"
 
 
-type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | UpdateMessageTextActiveType | AddMessageActiveType
+
+type ActionsTypes =  UpdateMessageTextActiveType | AddMessageActiveType
 export type UpdateMessageTextActiveType = ReturnType <typeof updateMessageTextAC>
 export type AddMessageActiveType = ReturnType <typeof addMessageAC>
+export type dialogPropsType={
+    DialogNamesData: Array<DialogNamesDataPropsType>
+    DialogMessagesData: Array<DialogMessagesDataPropsType >
+    DialogMessageText:string
+  }
+  export type DialogNamesDataPropsType = {
+    id: number
+    name:string
+    img:string
+  } 
+  export type DialogMessagesDataPropsType = {
+    id:number
+    message:string
+   img:string 
+  }
+  type InitialDialogsStateType = dialogPropsType
+
+
+
 
 export const addMessageAC = () =>({type:"ADD-MESSAGE"}as const)
 export const updateMessageTextAC = (text:string)=>({type:'UPDATE-MESSAGE-TEXT',text:text}as const)
@@ -31,16 +50,13 @@ const initialState = {
     ],
     DialogMessageText: ''
 }
-const dialogsReducer =(state:dialogPropsType = initialState, action:ActionsTypes)=>{
+const dialogsReducer =(state:InitialDialogsStateType = initialState, action:ActionsTypes):InitialDialogsStateType=>{
     switch (action.type) {
         case "ADD-MESSAGE":
             let message = { img: lily, id: 1, message: state.DialogMessageText }
-            state.DialogMessagesData = [...state.DialogMessagesData, message]
-            state.DialogMessageText = ''
-            return state;
+            return {...state, DialogMessagesData: [...state.DialogMessagesData, message], DialogMessageText: ''}
         case "UPDATE-MESSAGE-TEXT":
-            state.DialogMessageText = action.text
-            return state;
+            return {...state, DialogMessageText: action.text}
         default:
             return state
     }

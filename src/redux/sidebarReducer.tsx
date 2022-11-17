@@ -5,7 +5,9 @@ import mark from './mark.jpeg'
 import dafna from './dafna.jpeg' 
 import { AddPostActiveType, UpdateNewPostTextActiveType } from "./profileReducer"
 import { AddMessageActiveType, UpdateMessageTextActiveType } from "./dialogsReducer"
+
 type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | UpdateMessageTextActiveType | AddMessageActiveType
+export type InitialSideBarStateType = sidebarDataPropsType
 
 const initialState = {
     sidebarData: [
@@ -15,7 +17,8 @@ const initialState = {
         { id: 4, name: 'Dafna', img: dafna }]
 }
 
-const sidebarReducer =(state:sidebarDataPropsType = initialState,action:ActionsTypes)=>{
+
+const sidebarReducer =(state:InitialSideBarStateType = initialState,action:ActionsTypes):InitialSideBarStateType =>{
 return state
 }
 

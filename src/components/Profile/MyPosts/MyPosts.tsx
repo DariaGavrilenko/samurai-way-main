@@ -1,16 +1,13 @@
 
-import { type } from '@testing-library/user-event/dist/type'
 import React, { ChangeEvent } from 'react'
-import { profilePropsType} from '../../../App'
-import { addPostAC, updateNewPostTextAC } from '../../../redux/profileReducer'
-import { ProfileType } from '../Profile'
+import { profilesPropsType } from '../../../redux/profileReducer'
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 
 type MyPostsType = {
     addPost:()=>void
     updateNewPostText:(text:string)=>void
-    state: profilePropsType
+    state: profilesPropsType
 }
 
 const MyPosts = (props:MyPostsType ) => {
