@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import { AppStoreType } from "../../redux/storeRedux";
-import { changeLoadingStatus, setFollow, setCurrentPage, setTotalUsersCount, setUsers, setUnfollow } from "../../redux/usersReducer";
+import { changeLoadingStatus, setFollow, setCurrentPage, setTotalUsersCount, setUsers, setUnfollow, changeFollowingProgres } from "../../redux/usersReducer";
 import React from "react"
 import { usersPageType } from "../../redux/usersReducer"
 import axios from "axios"
 import { Users } from "./Users";
 import { Preload } from "../Preloade/Preloade";
+import { usersAPI } from "../../API/API";
 
 
 type UsersPropsType = {
@@ -16,22 +17,23 @@ type UsersPropsType = {
     setTotalUsersCount: (count: number) => void
     setCurrentPage: (page: number) => void
     changeLoadingStatus: (isLoading: boolean) => void
+    changeFollowingProgres: (isLoading: boolean, id:number) => void
 }
 
 export class UsersAPIContainer  extends React.Component<UsersPropsType> {
     componentDidMount(): void {
         this.props.changeLoadingStatus(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.pageSize}`).then(response => {
+        usersAPI.getUsers(this.props.state.currentPage,this.props.state.pageSize).then(data => {
             this.props.changeLoadingStatus(false)
-            this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.setUsers(data.items)
+            this.props.setTotalUsersCount(data.totalCount)
         })
     }
     choosePage = (page: number) =>{ this.props.setCurrentPage(page)
         this.props.changeLoadingStatus(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.state.pageSize}`).then(response => {
+        usersAPI.getUsers(page,this.props.state.pageSize).then(data => {
             this.props.changeLoadingStatus(false)
-            this.props.setUsers(response.data.items)
+            this.props.setUsers(data.items)
         })}
     render() {
         return (
@@ -40,7 +42,8 @@ export class UsersAPIContainer  extends React.Component<UsersPropsType> {
                     <Users state={this.props.state}
                         setFollow={this.props.setFollow}
                         setUnfollow={this.props.setUnfollow}
-                        choosePage={this.choosePage} />}
+                        choosePage={this.choosePage}
+                        changeFollowingProgres={this.props.changeFollowingProgres}  />}
 
             </>
 
@@ -69,4 +72,4 @@ const mapStatetoProps = (state: AppStoreType) => {
 
 
 export const UsersContainer = connect(mapStatetoProps,
-    { setUnfollow, setFollow, setUsers, setTotalUsersCount, setCurrentPage, changeLoadingStatus, })(UsersAPIContainer)
+    { setUnfollow, setFollow, setUsers, setTotalUsersCount, setCurrentPage, changeLoadingStatus,changeFollowingProgres })(UsersAPIContainer)

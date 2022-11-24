@@ -5,7 +5,8 @@ export type initialStateType = {
     pageSize:number
     totalUsersCount: number
     currentPage: number
-    isLoading: boolean
+    isLoading: boolean,
+    followingProgress:number[]
 }
 type usersType = {
     id: number
@@ -38,7 +39,8 @@ const initialState = {
     pageSize:100,
     totalUsersCount: 0,
     currentPage:1,
-    isLoading: true
+    isLoading: true,
+    followingProgress:[]
 }
 
 export const userReducer = (state: initialStateType = initialState, action: ActionType): initialStateType => {
@@ -49,12 +51,13 @@ export const userReducer = (state: initialStateType = initialState, action: Acti
         case 'SET_CURRENT_PAGE': return { ...state, currentPage: action.page }
         case 'SET_TOTAL_USERS_COUNT': return { ...state, totalUsersCount: action.count }
         case 'CHANGE_LOADING_STATUS': return {...state, isLoading: action.isLoading}
+        case 'CHANGE_FOLLOWING_PROGRESS': return action.isLoading ? {...state, followingProgress: [...state.followingProgress, action.userId]} : {...state, followingProgress: state.followingProgress.filter(id=> id !== action.userId)}
         default: return state
     }
 }
 
 
-type ActionType = setFollowAC | setUnfollowAC |setUsersAC| setTotalUsersCountAC | setCurrentPageAC | changeLoadingStatusAC 
+type ActionType = setFollowAC | setUnfollowAC |setUsersAC| setTotalUsersCountAC | setCurrentPageAC | changeLoadingStatusAC |changeFollowingProgresAC
 type setFollowAC = ReturnType <typeof setFollow>
 export const setFollow = (userId:number) => {
     return {
@@ -97,5 +100,14 @@ export const changeLoadingStatus  = (isLoading:boolean) => {
     return {
         type: "CHANGE_LOADING_STATUS",
         isLoading
+    } as const
+}
+
+type changeFollowingProgresAC = ReturnType<typeof changeFollowingProgres  >
+export const changeFollowingProgres  = (isLoading:boolean, userId:number) => {
+    return {
+        type: "CHANGE_FOLLOWING_PROGRESS",
+        isLoading, 
+        userId
     } as const
 }

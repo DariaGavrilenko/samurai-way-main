@@ -73,3 +73,13 @@ margin-right: 50px;
     font-weight: bold;
     font-size: larger;
 }
+.follow:disabled{
+    color:rgb(60, 55, 52);
+    background-color: rgb(96, 91, 87);
+    border: none;
+}
+.unfollow:disabled{
+    color:rgb(60, 55, 52);
+    background-color: rgb(96, 91, 87);
+    border: none;
+}
