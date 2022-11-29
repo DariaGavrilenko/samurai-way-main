@@ -35,7 +35,8 @@ type mapDispatchType = {
 
 const mapStateToProps =(state:AppStoreType)=>{
 return{
-    state: state.dialogs
+    state: state.dialogs,
+    auth: state.loginData
 }
 }
 const mapDispatchToProps = (dispatch:Dispatch):mapDispatchType=>{

@@ -12,6 +12,9 @@ type UsersPropsType = {
     setUnfollow: (id: number) => void
     choosePage:(page:number)=> void
     changeFollowingProgres: (isLoading: boolean, id:number) => void
+    followThunk: (id:number)=>void
+    unFollowThunk: (id:number)=>void
+
 }
 
 export  const Users = (props:UsersPropsType)=>{
@@ -22,28 +25,30 @@ export  const Users = (props:UsersPropsType)=>{
     }
 
     const setFollowCallBack = (id: number) => {
-        props.changeFollowingProgres(true,id)
-        usersAPI.follow(id).then(response => {
-            if (response.data.resultCode === 0) {
-                props.setFollow(id);
-            }
-            props.changeFollowingProgres(false,id)
-        })
+        props.followThunk(id)
+        // props.changeFollowingProgres(true,id)
+        // usersAPI.follow(id).then(response => {
+        //     if (response.data.resultCode === 0) {
+        //         props.setFollow(id);
+        //     }
+        //     props.changeFollowingProgres(false,id)
+        // })
     }
 
     const setUnfollowCallBack = (id: number) => {
-        props.changeFollowingProgres(true,id)
-        usersAPI.unFollow(id).then(response => {
-            if (response.data.resultCode === 0) {
-                props.setUnfollow(id);
-            }
-            props.changeFollowingProgres(false,id)
-        })
+        props.unFollowThunk(id)
+        // props.changeFollowingProgres(true,id)
+        // usersAPI.unFollow(id).then(response => {
+        //     if (response.data.resultCode === 0) {
+        //         props.setUnfollow(id);
+        //     }
+        //     props.changeFollowingProgres(false,id)
+        // })
     }
 
     return (<div className={s.userPageContainer}>
         <div className={s.pageSwitch}>
-            {pages.map(p => <span onClick={() => props.choosePage(p)} className={props.state.currentPage === p ? s.selectedPage : ''} > {p} </span>)}
+            {pages.map((p,index) => <span key={index} onClick={() => props.choosePage(p)} className={props.state.currentPage === p ? s.selectedPage : ''} > {p} </span>)}
         </div>
         {props.state.users.map(u => <div className={s.usersContainer} key={u.id}> <div>
             <div className={s.foto}>

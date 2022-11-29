@@ -1,3 +1,6 @@
+import { ThunkDispatch } from "redux-thunk"
+import { authorization } from "../API/API"
+
 export type loginDataType = initialStateType
 export type initialStateType = {
     data: {
@@ -36,4 +39,13 @@ export const setAuthorisationData = (id: number, email: string, login: string) =
             login
         }
     } as const
+}
+
+export const accessThunk = ()=>{
+    return (dispatch:ThunkDispatch<initialStateType, unknown, ActionsTypes>)=>{
+        authorization.logIn().then(response => {
+            if(response.data.resultCode === 0){let {id, email, login} = response.data.data
+            dispatch(setAuthorisationData(id, email, login))}
+          })
+    }
 }

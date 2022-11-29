@@ -1,5 +1,7 @@
 
 import React, { ChangeEvent } from 'react'
+import { Redirect } from 'react-router-dom'
+import { loginDataType } from '../../redux/authReducer'
 import { dialogPropsType } from '../../redux/dialogsReducer'
 import s from './Dialogs.module.css'
 import DialogsMessage from './DialogsMessage/DialogMessage'
@@ -9,6 +11,7 @@ type DialogsType = {
   state: dialogPropsType
   addMessage:()=>void
   updateMessageText:(text:string)=>void
+  auth:loginDataType
 }
 
 
@@ -29,6 +32,11 @@ function Dialogs(props:DialogsType) {
 
     const DialogsNamesRendering = props.state.DialogNamesData?.map((dn,index) => <DialogsNames img={dn.img} name={dn.name} id={dn.id} key={index}/>)
     const DialogMessagesRendering = props.state.DialogMessagesData?.map((dm,index) => <DialogsMessage message={dm.message} id={dm.id} img={dm.img} key={index} />)
+    console.log(props.auth.isAuth)
+    if(props.auth.isAuth ===false) return <Redirect to={'/Login'}/>
+    
+// alert(props.auth.isAuth)
+
     return (
         <div>
             <div className={s.dialogsContainer}>

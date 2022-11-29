@@ -1,3 +1,5 @@
+import { ThunkDispatch } from "redux-thunk"
+import { profileAPI } from "../API/API"
 
 type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | setUserProfileInfoType  
 
@@ -66,5 +68,18 @@ return {...state,PostsData: [newPost,...state.PostsData], newPostText: ''}
             return state;
     }
 }
+
+
+export const getProfileInfThunk = (userID:number|string) => {
+return (dispatch:ThunkDispatch<InitialProfileStateType, unknown, ActionsTypes>) =>{
+    profileAPI.getProfileInf(userID).then(response => {
+        dispatch(setUserProfileInfo (response.data))
+     
+    })
+}
+}
+
+
+
 
 export default profileReducer

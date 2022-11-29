@@ -1,3 +1,5 @@
+import { ThunkDispatch } from "redux-thunk"
+import { usersAPI } from "../API/API"
 
 export type usersPageType = initialStateType 
 export type initialStateType = {
@@ -110,4 +112,38 @@ export const changeFollowingProgres  = (isLoading:boolean, userId:number) => {
         isLoading, 
         userId
     } as const
+}
+
+export const getUsersThunk = (page:number,pageSize:number) => {
+    return (dispath:ThunkDispatch<initialStateType,unknown,ActionType>)=>{
+       dispath(changeLoadingStatus(true))
+        usersAPI.getUsers(page,pageSize).then(data => {
+            dispath(changeLoadingStatus(false))
+           dispath(setUsers(data.items))
+           dispath(setTotalUsersCount(data.totalCount))//not needed in pagination
+        })
+    }
+}
+
+export const unFollowThunk = (id:number) => {
+    return (dispath:ThunkDispatch<initialStateType,unknown,ActionType>)=>{
+        dispath(changeFollowingProgres(true,id))
+        usersAPI.unFollow(id).then(response => {
+            if (response.data.resultCode === 0) {
+                dispath(setUnfollow(id));
+            }
+            dispath(changeFollowingProgres(false,id))
+        })
+    }
+}
+export const followThunk = (id:number) => {
+    return (dispatch:ThunkDispatch<initialStateType,unknown,ActionType>)=>{
+        dispatch(changeFollowingProgres(true,id))
+        usersAPI.follow(id).then(response => {
+            if (response.data.resultCode === 0) {
+               dispatch(setFollow(id))
+            }
+            dispatch(changeFollowingProgres(false,id))
+        })
+    }
 }

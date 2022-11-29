@@ -6,6 +6,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 export type ProfilePropsType = {
     profile: profileType | null
+
 }
 const Profile = (props:ProfilePropsType) => {
     return (

@@ -24,7 +24,7 @@ const onChangehandler = (e:ChangeEvent<HTMLTextAreaElement>) =>{
  props.updateNewPostText(postMessageRef.current?.value ? postMessageRef.current.value : '' )
 } 
 
-    const postRendering = props.state.PostsData.map(post => <Post  message={post.message} likes={post.likes}/>)
+    const postRendering = props.state.PostsData.map((post,index) => <Post key={index} message={post.message} likes={post.likes}/>)
     return (
         <div className={s.posts}>
             my post
