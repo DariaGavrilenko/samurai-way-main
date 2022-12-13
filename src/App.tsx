@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { HeaderContainer } from './components/Header/HeaderContainer';
-import { Login } from './components/Login/Login';
+import { Login, LoginContainer } from './components/Login/Login';
 import Music from './components/Music/Music';
 import { NavbarContainer } from './components/Nav/NavbarContainer';
 import News from './components/News/News';
@@ -11,11 +11,11 @@ import { ProfileContainerPro } from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import { UsersContainer } from './components/Users/UsersContainer';
 import { AddMessageActiveType, DialogNamesDataPropsType, dialogPropsType, UpdateMessageTextActiveType } from './redux/dialogsReducer';
-import { AddPostActiveType, profilesPropsType, UpdateNewPostTextActiveType } from './redux/profileReducer';
+import { AddPostActiveType, profilesPropsType} from './redux/profileReducer';
 
 
 
-export type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | UpdateMessageTextActiveType | AddMessageActiveType
+export type ActionsTypes = AddPostActiveType| UpdateMessageTextActiveType | AddMessageActiveType
 
 export type globalType = {
   state: statePropsType
@@ -67,7 +67,8 @@ const App = () => {
           <Route path='/news' render={()=><News/>} />
           <Route path='/music' render={()=><Music/>} />
           <Route path='/settings' render={()=><Settings/>} />
-          <Route path='/Login' render={()=><Login/>}/>
+          <Route path='/Login' render={()=><LoginContainer/>}/>
+      
         </div>
       </div>
     </BrowserRouter>

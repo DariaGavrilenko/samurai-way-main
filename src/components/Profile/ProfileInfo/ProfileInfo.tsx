@@ -1,8 +1,11 @@
 import { profileType } from '../../../redux/profileReducer'
 import s from './ProfileInfo.module.css'
+import { ProfileStatus } from './ProfileStatus'
 
 export type ProfileInfoPropsType ={
     profileInfo: profileType | null
+    status: string
+    updateStatusThunk:(text:string)=>void
 }
 
 function ProfileInfo(props: ProfileInfoPropsType) {
@@ -12,6 +15,9 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                 <img src="https://www.ie.edu/insights/wp-content/uploads/2017/01/Lean-Cities.jpg" alt="" />
             </div>
             <div className={s.usersInformation}>
+            <div className={s.statusContainer}>
+                    <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
+                </div>
                 <div className={s.ava}><img src={props.profileInfo?.photos.large ? props.profileInfo?.photos.large : "https://i.pinimg.com/564x/07/24/ac/0724acaf0726777b170d09d3774cdcb0.jpg"} alt="usersPhoto" /></div>
                 <div className={s.information}>
                     <span>Work status: {props.profileInfo?.lookingForAJob ? 'looking for job' : ' work now'}</span>
@@ -27,6 +33,7 @@ function ProfileInfo(props: ProfileInfoPropsType) {
                         <li>mainLink: {props.profileInfo?.contacts.mainLink}</li>
                     </ul>
                 </div>
+            
             </div>
         </div>
     )

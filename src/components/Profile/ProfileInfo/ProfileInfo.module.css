@@ -21,6 +21,7 @@
       border-radius: 10px;
       margin-top: 10px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
     }
   
@@ -41,4 +42,18 @@
       border-radius: 10px;
       width: 300px;
       height: 300px;
+    }
+    .statusContainer{
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: large;
+      width: 850px;
+      min-height: 30px;
+      border: 2px solid rgb(216, 103, 4);
+      border-radius: 10px;
+      word-break: break-all;
+      padding-left: 50px;
+      background-color: rgb(131, 129, 127);
+      margin: 10px;
     }

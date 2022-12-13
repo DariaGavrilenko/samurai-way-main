@@ -1,0 +1,13 @@
+.error textarea,
+.error input {
+    border: 2px rgb(193, 3, 3) solid;
+}
+
+.error span {
+    color: rgb(190, 16, 16);
+    font-weight: bold;
+}
+
+.commonError {
+    color: rgb(190, 16, 16);
+}

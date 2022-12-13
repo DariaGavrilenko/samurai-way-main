@@ -13,7 +13,7 @@ export type AddMessageActiveType = ReturnType <typeof addMessageAC>
 export type dialogPropsType={
     DialogNamesData: Array<DialogNamesDataPropsType>
     DialogMessagesData: Array<DialogMessagesDataPropsType >
-    DialogMessageText:string
+    // DialogMessageText:string
   }
   export type DialogNamesDataPropsType = {
     id: number
@@ -30,7 +30,7 @@ export type dialogPropsType={
 
 
 
-export const addMessageAC = () =>({type:"ADD-MESSAGE"}as const)
+export const addMessageAC = (text:string) =>({type:"ADD-MESSAGE", text}as const)
 export const updateMessageTextAC = (text:string)=>({type:'UPDATE-MESSAGE-TEXT',text:text}as const)
 
 const initialState = {
@@ -53,10 +53,11 @@ const initialState = {
 const dialogsReducer =(state:InitialDialogsStateType = initialState, action:ActionsTypes):InitialDialogsStateType=>{
     switch (action.type) {
         case "ADD-MESSAGE":
-            let message = { img: lily, id: 1, message: state.DialogMessageText }
-            return {...state, DialogMessagesData: [...state.DialogMessagesData, message], DialogMessageText: ''}
-        case "UPDATE-MESSAGE-TEXT":
-            return {...state, DialogMessageText: action.text}
+            let message = { img: lily, id: 1, message: action.text}
+            return {...state, DialogMessagesData: [...state.DialogMessagesData, message]}
+                // DialogMessageText: ''}
+        // case "UPDATE-MESSAGE-TEXT":
+        //     return {...state, DialogMessageText: action.text}
         default:
             return state
     }

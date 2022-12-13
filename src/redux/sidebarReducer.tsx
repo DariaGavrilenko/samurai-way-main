@@ -3,10 +3,10 @@ import lily from './lily.jpeg'
 import sam from './sam.jpeg'
 import mark from './mark.jpeg'
 import dafna from './dafna.jpeg' 
-import { AddPostActiveType, UpdateNewPostTextActiveType } from "./profileReducer"
+import { AddPostActiveType} from "./profileReducer"
 import { AddMessageActiveType, UpdateMessageTextActiveType } from "./dialogsReducer"
 
-type ActionsTypes = AddPostActiveType | UpdateNewPostTextActiveType | UpdateMessageTextActiveType | AddMessageActiveType
+type ActionsTypes = AddPostActiveType | UpdateMessageTextActiveType | AddMessageActiveType
 export type InitialSideBarStateType = sidebarDataPropsType
 
 const initialState = {
