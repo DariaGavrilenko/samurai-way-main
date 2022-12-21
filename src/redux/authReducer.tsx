@@ -18,13 +18,14 @@ const initialState = {
         email: null,
         login: null
       },
-     isAuth: false 
+     isAuth: false
 }
 
 
 export const authReducer = (state:initialStateType = initialState,action:ActionsTypes):loginDataType=>{
+    console.log(state);
     switch(action.type){
-        case 'SET_AUTH_DATA': console.log({...state,  data: {...state.data, ...action.data}})
+        case 'SET_AUTH_DATA': console.log({...state,  data: {...state.data, ...action.data}, isAuth: action.isAuth})
         return {...state,  data: {...state.data, ...action.data}, isAuth: action.isAuth}
         default: return state
     }
@@ -43,9 +44,9 @@ export const setAuthorisationData = (id: number|null, email: string|null, login:
     } as const
 }
 
-export const accessThunk = ()=>{
-    return (dispatch:ThunkDispatch<initialStateType, unknown, ActionsTypes>)=>{
-        authorization.me().then(response => {
+export const accessThunk:any = ()=>{
+    return (dispatch:ThunkDispatch<initialStateType, unknown, ActionsTypes>):Promise<any>=>{
+     return authorization.me().then(response => {
             if(response.data.resultCode === 0){let {id, email, login} = response.data.data
             dispatch(setAuthorisationData(id, email, login,true))}
           })

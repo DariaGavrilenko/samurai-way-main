@@ -15,9 +15,6 @@ export type HeaderAPIContainerType = {
 
 
 export class HeaderAPIContainer extends React.Component<HeaderAPIContainerType>{
-  componentDidMount(): void {
-     this.props.accessThunk()
-  }
   render() {
     return (
       <>

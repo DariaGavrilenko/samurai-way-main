@@ -15,8 +15,11 @@ return {
 }
 
 export function WithAuthRedirect <T extends JSX.IntrinsicAttributes>(Component:ComponentType<T>){
+    console.log('WITHAUTHREDIRECT');
+    
 let RedirectComponent = (props:MapStatePropsType)=>{
     let {isAuth, ...restProps} = props
+    console.log(isAuth, 'tyt');
     if(!isAuth) return <Redirect to={'/Login'}/>
     return <Component {...restProps as T}/>
 }

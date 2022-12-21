@@ -15,22 +15,26 @@ export type ProfileContainerPropsType = {
     state: profilesPropsType
     auth:loginDataType 
     setUserProfileInfo:(info:profileType)=>void
-    getProfileInfThunk: (id:string | number)=>void
-    getStatusThunk:(id:string | number)=>void
+    getProfileInfThunk: (id:string | number | null)=>void
+    getStatusThunk:(id:string | number | null)=>void
     updateStatusThunk:(text:string)=>void
+    autorisationUserID:number|null
 }
 
 export class ProfileContainer extends React.Component<ProfileContainerPropsType & RouteComponentProps<{userID:string}> > {
     componentDidMount(): void {
-        let userID = this.props.match.params.userID ? this.props.match.params.userID :  26495
+        let userID = this.props.match.params.userID ? this.props.match.params.userID : 26495
+        // if(!userID){
+        //     this.props.history.push('/Login')
+        // }
        this.props.getProfileInfThunk(userID)
        this.props.getStatusThunk(userID)
     }
     render() {
         return (
             <>
-                {!this.props.state.profile ? <Preload /> :
-                    <Profile profile={this.props.state.profile} status={this.props.state.status} updateStatusThunk={this.props.updateStatusThunk}/>}
+            
+                    <Profile profile={this.props.state.profile} status={this.props.state.status} updateStatusThunk={this.props.updateStatusThunk}/>
 
             </>
 
@@ -40,7 +44,8 @@ export class ProfileContainer extends React.Component<ProfileContainerPropsType 
 
 const mapStatetoProps=(state:AppStoreType)=>{
 return {
-    state: state.profile
+    state: state.profile,
+autorisationUserID: state.loginData.data.id
 }
 }
 

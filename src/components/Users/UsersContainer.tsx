@@ -7,6 +7,7 @@ import axios from "axios"
 import { Users } from "./Users";
 import { Preload } from "../Preloade/Preloade";
 import { usersAPI } from "../../API/API";
+import { catchUsers } from "../../redux/selectors";
 
 
 type UsersPropsType = {
@@ -63,7 +64,7 @@ export class UsersAPIContainer  extends React.Component<UsersPropsType> {
 
 const mapStatetoProps = (state: AppStoreType) => {
     return {
-        state: state.usersPage
+        state: catchUsers(state)
     }
 }
 

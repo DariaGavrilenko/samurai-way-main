@@ -9,7 +9,7 @@ const Header = (props: HeaderType) => {
     <header className={s.header}>
       <img src="https://www.pngmart.com/files/19/Geometry-Pattern-PNG-Clipart.png" alt="" />
       <div className={s.login}>
-        <NavLink to='/loading'>{props.state.isAuth ?
+        <NavLink to='/Login'>{props.state.isAuth ?
           <div>
             {props.state.data.login} -
             <button onClick={props.logOUTThunk}>Log Out</button>
