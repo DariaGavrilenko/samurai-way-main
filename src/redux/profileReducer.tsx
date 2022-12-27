@@ -98,6 +98,7 @@ export const getStatusThunk = (userID: number | string) => {
 }
 
 export const updateStatusThunk = (status:string) => {
+    debugger
     return (dispatch: ThunkDispatch<InitialProfileStateType, unknown, ActionsTypes>) => {
         profileAPI.updateStatus(status).then(response =>{
              if(response.data.resultCode === 0){

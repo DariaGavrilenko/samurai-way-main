@@ -1,6 +1,7 @@
 import { profileType } from '../../../redux/profileReducer'
 import s from './ProfileInfo.module.css'
 import { ProfileStatus } from './ProfileStatus'
+import { ProfileStatusWithHook } from './ProfileStatusWithHook'
 
 export type ProfileInfoPropsType ={
     profileInfo: profileType | null
@@ -16,7 +17,7 @@ function ProfileInfo(props: ProfileInfoPropsType) {
             </div>
             <div className={s.usersInformation}>
             <div className={s.statusContainer}>
-                    <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk}/>
+                    <ProfileStatusWithHook status={props.status} updateStatusThunk={props.updateStatusThunk}/>
                 </div>
                 <div className={s.ava}><img src={props.profileInfo?.photos.large ? props.profileInfo?.photos.large : "https://i.pinimg.com/564x/07/24/ac/0724acaf0726777b170d09d3774cdcb0.jpg"} alt="usersPhoto" /></div>
                 <div className={s.information}>
