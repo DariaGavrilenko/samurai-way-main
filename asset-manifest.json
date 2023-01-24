@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/DariaGavrilenko/samurai-way-main/static/css/main.52fa21e1.css",
+    "main.js": "/DariaGavrilenko/samurai-way-main/static/js/main.9bc8660c.js",
+    "static/media/sam.jpeg": "/DariaGavrilenko/samurai-way-main/static/media/sam.59f8799926b27eeb570e.jpeg",
+    "static/media/main.jpeg": "/DariaGavrilenko/samurai-way-main/static/media/main.70e577755f96b9a2dc9e.jpeg",
+    "static/media/lily.jpeg": "/DariaGavrilenko/samurai-way-main/static/media/lily.ceec1f2c9c6d4f659487.jpeg",
+    "static/media/mark.jpeg": "/DariaGavrilenko/samurai-way-main/static/media/mark.ca21af8b859d959dd1a7.jpeg",
+    "static/media/dafna.jpeg": "/DariaGavrilenko/samurai-way-main/static/media/dafna.2f95b66331048b74d14f.jpeg",
+    "index.html": "/DariaGavrilenko/samurai-way-main/index.html",
+    "main.52fa21e1.css.map": "/DariaGavrilenko/samurai-way-main/static/css/main.52fa21e1.css.map",
+    "main.9bc8660c.js.map": "/DariaGavrilenko/samurai-way-main/static/js/main.9bc8660c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.52fa21e1.css",
+    "static/js/main.9bc8660c.js"
+  ]
+}
