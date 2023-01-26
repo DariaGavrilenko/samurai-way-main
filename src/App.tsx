@@ -1,12 +1,12 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom';
+import {  Redirect, Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { HeaderContainer } from './components/Header/HeaderContainer';
-import { Login, LoginContainer } from './components/Login/Login';
+import {  LoginContainer } from './components/Login/Login';
 import Music from './components/Music/Music';
 import { NavbarContainer } from './components/Nav/NavbarContainer';
 import News from './components/News/News';
@@ -35,30 +35,6 @@ export type statePropsType = {
 export type sidebarDataPropsType = {
   sidebarData:Array<DialogNamesDataPropsType>
 }
-// export type profilePropsType = {
-//   PostsData:Array<PostsDataPropsType>
-//   newPostText:string
-// }
-// export type PostsDataPropsType = {
-//   id:number
-//   message:string
-//   likes:number
-// }
-// export type dialogPropsType={
-//   DialogNamesData: Array<DialogNamesDataPropsType>
-//   DialogMessagesData: Array<DialogMessagesDataPropsType >
-//   DialogMessageText:string
-// }
-// export type DialogNamesDataPropsType = {
-//   id: number
-//   name:string
-//   img:string
-// } 
-// export type DialogMessagesDataPropsType = {
-//   id:number
-//   message:string
-//  img:string 
-// }
 
 type AppPropsType = {
   isInitialize: boolean
@@ -75,6 +51,7 @@ class App extends React.Component<AppPropsType>{
     if(!this.props.isInitialize){
       return <Preload/>
     }
+
     return (
         <div className='app-wrapper'>
           <HeaderContainer/>
@@ -87,6 +64,7 @@ class App extends React.Component<AppPropsType>{
             <Route path='/music' render={()=><Music/>} />
             <Route path='/settings' render={()=><Settings/>} />
             <Route path='/Login' render={()=><LoginContainer/>}/>
+            <Route path='/' render={()=><LoginContainer/>}/>
         
           </div>
         </div>

@@ -30,11 +30,11 @@ const onClickHandler = (formData:MyPostFormType)=>{
     const postRendering = props.state.PostsData.map((post,index) => <Post key={index} message={post.message} likes={post.likes}/>)
     return (
         <div className={s.posts}>
-            my post
+         
             <div className={s.addPostArea}>
               <MyPostFormRedux onSubmit={onClickHandler}/>
             </div>
-            <div>new post
+            <div>
                 {postRendering}
             </div>
         </div>
