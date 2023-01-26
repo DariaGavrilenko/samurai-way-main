@@ -16,3 +16,13 @@
    right: 10px; 
   color: rgb(115, 34, 2);
   }
+  .logOutButton{
+    background-color: rgb(115, 34, 2) ;
+    border: 2px solid rgb(115, 34, 2);
+    border-radius: 10px;
+    width: 90px;
+    height: 35px;
+    margin-left: 5px;
+    font-weight: bolder;
+    color:rgb(216, 103, 4)
+  }

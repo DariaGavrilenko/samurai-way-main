@@ -3,6 +3,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import { usersAPI } from "../../API/API"
 import { usersPageType } from "../../redux/usersReducer"
+import { Paginator } from "../Paginator/Paginator"
 import s from "./Users.module.css"
 
 
@@ -18,11 +19,11 @@ type UsersPropsType = {
 }
 
 export  const Users = (props:UsersPropsType)=>{
-    let pageCount =Math.ceil( props.state.totalUsersCount /  props.state.pageSize)
-    let pages = []
-    for (let i = 1; i <= pageCount; i++) {
-        pages.push(i)
-    }
+    // let pageCount =Math.ceil( props.state.totalUsersCount /  props.state.pageSize)
+    // let pages = []
+    // for (let i = 1; i <= pageCount; i++) {
+    //     pages.push(i)
+    // }
 
     const setFollowCallBack = (id: number) => {
         props.followThunk(id)
@@ -47,9 +48,10 @@ export  const Users = (props:UsersPropsType)=>{
     }
 
     return (<div className={s.userPageContainer}>
-        <div className={s.pageSwitch}>
+        {/* <div className={s.pageSwitch}>
             {pages.map((p,index) => <span key={index} onClick={() => props.choosePage(p)} className={props.state.currentPage === p ? s.selectedPage : ''} > {p} </span>)}
-        </div>
+        </div> */}
+        <Paginator totalItemCount={props.state.totalUsersCount} currentPage={props.state.currentPage} pageSize={props.state.pageSize} portionSize={10} choosePage={props.choosePage}/>
         {props.state.users.map(u => <div className={s.usersContainer} key={u.id}> <div>
             <div className={s.foto}>
                 <NavLink to={"/profile/" + u.id}>

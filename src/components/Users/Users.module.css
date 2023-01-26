@@ -65,7 +65,7 @@ margin-right: 50px;
 }
 .pageSwitch{
     color: rgb(243, 140, 38);
-    width: 700px;
+    width: 350px;
     margin: 50px auto;
 
 }
@@ -82,4 +82,14 @@ margin-right: 50px;
     color:rgb(60, 55, 52);
     background-color: rgb(96, 91, 87);
     border: none;
+}
+.paginatorButton{
+    background-color: rgb(115, 34, 2) ;
+    border: 2px solid rgb(115, 34, 2);
+    border-radius: 10px;
+    width: 50px;
+    height: 20px;
+    margin-left: 5px;
+    font-weight: bolder;
+    color:rgb(216, 103, 4)
 }

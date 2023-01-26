@@ -24,8 +24,6 @@ type usersType = {
 }
 
 
-
-
 type locationType = {
     city: string
     country: string

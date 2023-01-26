@@ -6,6 +6,7 @@ import { AppStoreType } from "../../redux/storeRedux"
 import { required } from "../../utils/validation"
 import { Input } from "../FormsControls/FormsControls"
 import style from './../FormsControls/FormsControls.module.css'
+import s from './Login.module.css'
 
 
 export const Login = (props:any) => {
@@ -15,7 +16,7 @@ const onSubmit = (formData:FormDataType)=>{
 if (props.isAuth){
 return <Redirect to={'/profile'} />}
     return (<div>
-        <h1>Login</h1>
+        <h1 className={s.loginTitle}>Login</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 
@@ -39,23 +40,27 @@ type FormDataType = {
 export const LoginForm = (props:InjectedFormProps<FormDataType>) => {
 
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} className={s.formContainer} >
             <div>
-                <Field placeholder="Login" name="email" component={Input}  validate={[required]}/>
+                <Field placeholder="Login" name="email" component={Input} validate={[required]} className={s.formInput} />
             </div>
             <div>
-                <Field placeholder="Passsword" name="password" component={Input}  validate={[required]} type={'password'}/>
+                <Field placeholder="Passsword" name="password" component={Input} validate={[required]} type={'password'} className={s.formInput} />
             </div>
             <div>
-                <Field type={'checkbox'} name='rememberMe' component={'input'}/> remember me
+                <Field type={'checkbox'} name='rememberMe' component={'input'} /> remember me
             </div>
             {props.error && <div className={style.commonError}>
                 {props.error}
             </div>}
-            
+
             <div>
-                <button>log in</button>
+                <button className={s.formButton} >log in</button>
             </div>
+            <div className={s.testDataContainer}>Enter test data to log in : 
+                <p>Email: free@samuraijs.com</p>    
+                <p>Password: free</p>    
+                </div>
         </form>
     )
 }
