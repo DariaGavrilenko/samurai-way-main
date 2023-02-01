@@ -63,7 +63,7 @@ class App extends React.Component<AppPropsType>{
             <Route path='/music' render={()=><Music/>} />
             <Route path='/settings' render={()=><Settings/>} />
             <Route path='/Login' render={()=><LoginContainer/>}/>
-            <Route exact path='/samurai-way-main/' render={()=><LoginContainer/>}/>
+            <Route exact path='/samurai-way-main' render={()=><LoginContainer/>}/>
           </div>
         </div>
     )
