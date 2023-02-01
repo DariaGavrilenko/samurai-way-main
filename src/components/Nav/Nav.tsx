@@ -1,4 +1,3 @@
-
 import { NavLink } from 'react-router-dom'
 import { sidebarDataPropsType} from '../../App'
 import s from './Nav.module.css'

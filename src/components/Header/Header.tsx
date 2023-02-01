@@ -4,15 +4,15 @@ import { HeaderAPIContainerType } from './HeaderContainer'
 
 export type HeaderType = HeaderAPIContainerType
 
-const Header = (props: HeaderType) => {
+const Header = ({ state, logOUTThunk, ...rest }: HeaderType) => {
   return (
     <header className={s.header}>
       <img src="https://www.pngmart.com/files/19/Geometry-Pattern-PNG-Clipart.png" alt="" />
       <div className={s.login}>
-        <NavLink to='/Login'>{props.state.isAuth ?
+        <NavLink to='/Login'>{state.isAuth ?
           <div>
-            {props.state.data.login}   
-            <button onClick={props.logOUTThunk} className={s.logOutButton}>Log Out</button>
+            {state.data.login}
+            <button onClick={logOUTThunk} className={s.logOutButton}>Log Out</button>
           </div> : 'Login'}</NavLink>
       </div>
     </header>

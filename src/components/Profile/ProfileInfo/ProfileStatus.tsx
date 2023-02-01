@@ -2,13 +2,13 @@ import React, { ChangeEvent } from "react";
 
 type ProfileStatusType = {
     status: string
-    updateStatusThunk:(text:string)=>void
+    updateStatusThunk: (text: string) => void
 }
 
-export class ProfileStatus extends React.Component<ProfileStatusType > {
+export class ProfileStatus extends React.Component<ProfileStatusType> {
     state = {
         editMode: false,
-        status:this.props.status
+        status: this.props.status
     }
 
     activateEditMode = () => {
@@ -31,7 +31,7 @@ export class ProfileStatus extends React.Component<ProfileStatusType > {
             })
         }
     }
-    onChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
+    onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             status: e.currentTarget.value
         }
@@ -39,7 +39,7 @@ export class ProfileStatus extends React.Component<ProfileStatusType > {
     }
     render() {
         return (
-            this.state.editMode ? <input autoFocus onBlur={this.diactivateEditMode} value={this.state.status} onChange={this.onChangeHandler}/> : <div onDoubleClick={this.activateEditMode}>{this.props.status ? this.props.status : 'click here twice to change status'}</div>
+            this.state.editMode ? <input autoFocus onBlur={this.diactivateEditMode} value={this.state.status} onChange={this.onChangeHandler} /> : <div onDoubleClick={this.activateEditMode}>{this.props.status ? this.props.status : 'click here twice to change status'}</div>
 
         )
     }

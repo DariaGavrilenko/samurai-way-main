@@ -1,37 +1,35 @@
-
 import lily from './lily.jpeg'
 import sam from './sam.jpeg'
 import mark from './mark.jpeg'
-import dafna from './dafna.jpeg' 
+import dafna from './dafna.jpeg'
 import main from './main.jpeg'
 
 
 
-type ActionsTypes =  UpdateMessageTextActiveType | AddMessageActiveType
-export type UpdateMessageTextActiveType = ReturnType <typeof updateMessageTextAC>
-export type AddMessageActiveType = ReturnType <typeof addMessageAC>
-export type dialogPropsType={
+type ActionsTypes = UpdateMessageTextActiveType | AddMessageActiveType
+export type UpdateMessageTextActiveType = ReturnType<typeof updateMessageTextAC>
+export type AddMessageActiveType = ReturnType<typeof addMessageAC>
+export type dialogPropsType = {
     DialogNamesData: Array<DialogNamesDataPropsType>
-    DialogMessagesData: Array<DialogMessagesDataPropsType >
-    // DialogMessageText:string
-  }
-  export type DialogNamesDataPropsType = {
+    DialogMessagesData: Array<DialogMessagesDataPropsType>
+}
+export type DialogNamesDataPropsType = {
     id: number
-    name:string
-    img:string
-  } 
-  export type DialogMessagesDataPropsType = {
-    id:number
-    message:string
-   img:string 
-  }
-  type InitialDialogsStateType = dialogPropsType
+    name: string
+    img: string
+}
+export type DialogMessagesDataPropsType = {
+    id: number
+    message: string
+    img: string
+}
+type InitialDialogsStateType = dialogPropsType
 
 
 
 
-export const addMessageAC = (text:string) =>({type:"ADD-MESSAGE", text}as const)
-export const updateMessageTextAC = (text:string)=>({type:'UPDATE-MESSAGE-TEXT',text:text}as const)
+export const addMessageAC = (text: string) => ({ type: "ADD-MESSAGE", text } as const)
+export const updateMessageTextAC = (text: string) => ({ type: 'UPDATE-MESSAGE-TEXT', text: text } as const)
 
 const initialState = {
     DialogNamesData: [
@@ -50,14 +48,11 @@ const initialState = {
     ],
     DialogMessageText: ''
 }
-const dialogsReducer =(state:InitialDialogsStateType = initialState, action:ActionsTypes):InitialDialogsStateType=>{
+const dialogsReducer = (state: InitialDialogsStateType = initialState, action: ActionsTypes): InitialDialogsStateType => {
     switch (action.type) {
         case "ADD-MESSAGE":
-            let message = { img: lily, id: 1, message: action.text}
-            return {...state, DialogMessagesData: [...state.DialogMessagesData, message]}
-                // DialogMessageText: ''}
-        // case "UPDATE-MESSAGE-TEXT":
-        //     return {...state, DialogMessageText: action.text}
+            let message = { img: lily, id: 1, message: action.text }
+            return { ...state, DialogMessagesData: [...state.DialogMessagesData, message] }
         default:
             return state
     }

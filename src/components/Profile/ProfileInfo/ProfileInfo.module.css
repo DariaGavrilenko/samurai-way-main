@@ -1,12 +1,14 @@
-.contentImg{
-    width: 1040px;
-    height: 200px;
-  }
-  .contentImg img{
-    width: 1040px;
-    height: 200px;
-  }
-  /* .ava{
+.contentImg {
+  width: 1040px;
+  height: 200px;
+}
+
+.contentImg img {
+  width: 1040px;
+  height: 200px;
+}
+
+/* .ava{
     width: 1040px;
     height: 200px;
     border: 2px solid rgb(216, 103, 4);
@@ -14,46 +16,141 @@
     margin-top: 10px;
 
   } */
-    .usersInformation {
-      width: 1040px;
-      min-height: 200px;
-      border: 2px solid rgb(216, 103, 4);
-      border-radius: 10px;
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-  
-    .information {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-weight: bold;
-      font-size: large;
-      width: 350px;
-      border: 2px solid rgb(216, 103, 4);
-      border-radius: 10px;
-      word-break: break-all;
-      padding-left: 50px;
-      background-color: rgb(131, 129, 127);
-    }
-    .ava img{
-      border-radius: 10px;
-      width: 300px;
-      height: 300px;
-    }
-    .statusContainer{
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-      font-size: large;
-      width: 850px;
-      min-height: 30px;
-      border: 2px solid rgb(216, 103, 4);
-      border-radius: 10px;
-      word-break: break-all;
-      padding-left: 50px;
-      background-color: rgb(131, 129, 127);
-      margin: 10px;
-    }
+.usersInformation {
+  width: 1040px;
+  min-height: 200px;
+  border: 2px solid rgb(216, 103, 4);
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.information, .informationForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: medium;
+  width: 350px;
+  border: 2px solid rgb(216, 103, 4);
+  border-radius: 10px;
+  word-break: break-all;
+  padding: 20px;
+  background-color: rgb(131, 129, 127);
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.informationForm {
+  font-weight: bold;
+  font-size: small;
+}
+
+
+.ava img {
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: large;
+  width: 850px;
+  min-height: 30px;
+  border: 2px solid rgb(216, 103, 4);
+  border-radius: 10px;
+  word-break: break-all;
+  padding-left: 50px;
+  background-color: rgb(131, 129, 127);
+  margin: 10px;
+}
+
+.changeAvatarButton {
+  background-color: rgba(216, 103, 4, 0.096);
+  border: 1px solid rgba(216, 103, 4, 0);
+  border-radius: 10px;
+  width: 115px;
+  height: 35px;
+  position: absolute;
+  top: -37px;
+  right: 0px;
+  color: rgb(216, 103, 4);
+  font-weight: bolder;
+}
+
+.changeAvatarButton:hover {
+  background-color: rgb(216, 103, 4);
+  border: 2px solid rgb(216, 103, 4);
+  border-radius: 10px;
+  width: 115px;
+  height: 35px;
+  position: absolute;
+  top: -37px;
+  right: 0px;
+  color: rgb(115, 34, 2);
+  font-weight: bolder;
+}
+
+.changeAvatarButtonContainer {
+  position: relative;
+}
+
+.informationForm textarea {
+  background-color: #e5e1e161;
+  resize: none;
+  height: 13px;
+  width: 300px;
+  border-radius: 10px;
+  color: rgb(0 0 0);
+  border: 2px solid rgb(216, 103, 4);
+  font-size: 13px;
+  padding: 6px 5px;
+  outline: none;
+}
+
+
+.formError {
+  color: rgb(190, 16, 16);
+  font-size: 15px;
+  font-weight: normal;
+  margin: 10px;
+}
+
+.contactsInput {
+  display: flex;
+}
+
+.contactsName {
+  margin-right: 10px;
+  font-size: small;
+}
+
+.contactsTitle {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.profileInput{
+  border: 1px solid rgb(216, 103, 4);
+  border-radius: 6px;
+  background-color: #e5e1e161;
+  margin: 2px;
+}
+
+.editFormButton, .sentFormButton {
+  background-color: rgb(216, 103, 4);
+  border: 2px solid rgb(216, 103, 4);
+  border-radius: 10px;
+  width: 70px;
+  height: 27px;
+  color: rgb(115, 34, 2);
+  font-weight: bolder;
+  margin: 5px;
+  position: absolute;
+  bottom: 0px;
+  right: 11px;
+}

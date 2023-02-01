@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import {  Redirect, Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
@@ -46,8 +46,7 @@ class App extends React.Component<AppPropsType>{
     this.props.initializeThunk()
  }
   render(){
-    console.log('APP');
-  
+
     if(!this.props.isInitialize){
       return <Preload/>
     }
@@ -64,11 +63,9 @@ class App extends React.Component<AppPropsType>{
             <Route path='/music' render={()=><Music/>} />
             <Route path='/settings' render={()=><Settings/>} />
             <Route path='/Login' render={()=><LoginContainer/>}/>
-            <Route path='/' render={()=><LoginContainer/>}/>
-        
+            <Route exact path='/' render={()=><LoginContainer/>}/>
           </div>
         </div>
-      
     )
   }
   
@@ -81,10 +78,3 @@ const mapStatetoProps = (state:AppStoreType)=>{
 }
 
  export default compose<React.ComponentType>(withRouter,connect(mapStatetoProps, {initializeThunk}))(App);
-
-
-//props:globalType
-//sidebarData={props.state.sidebar.sidebarData}
-//dispatch={props.dispatch}
- // state={props.state} 
-//state={props.state} dispatch={props.dispatch}

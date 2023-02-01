@@ -1,5 +1,6 @@
 import axios from "axios"
 import { Login } from "../components/Login/Login"
+import { InfoContainerFormType } from "../components/Profile/ProfileInfo/InfoContainerForm"
 const instance = axios.create({
     withCredentials:true,
     headers: {
@@ -33,7 +34,7 @@ export const authorization = {
 }
 
 export const profileAPI = {
-    getProfileInf(userID:number|string){
+    getProfileInf(userID:number|null){
       return instance.get(`profile/` + userID)
     },
     getStatus(userID:number|string){
@@ -41,5 +42,15 @@ export const profileAPI = {
     },
     updateStatus(status:string){
         return instance.put(`profile/status/` , {status:status})
-    } 
+    },
+    updateAvatar(file:File){
+        const formData = new FormData()
+        formData.append('image', file)
+        return instance.put(`profile/photo`, formData, {headers:{
+            'Content-Type':'multipart/form-data'
+        }} )
+    },
+    updateProfile(formData: InfoContainerFormType){
+        return instance.put(`profile/` , {...formData})
+    }
 }

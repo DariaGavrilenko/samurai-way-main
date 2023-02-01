@@ -9,35 +9,36 @@ import style from './../FormsControls/FormsControls.module.css'
 import s from './Login.module.css'
 
 
-export const Login = (props:any) => {
-const onSubmit = (formData:FormDataType)=>{
-    props.logINThunk(formData.email,formData.password,formData.rememberMe)
-}
-if (props.isAuth){
-return <Redirect to={'/profile'} />}
+export const Login = (props: any) => {
+    const onSubmit = (formData: FormDataType) => {
+        props.logINThunk(formData.email, formData.password, formData.rememberMe)
+    }
+    if (props.isAuth) {
+        return <Redirect to={'/profile'} />
+    }
     return (<div>
         <h1 className={s.loginTitle}>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
+        <LoginReduxForm onSubmit={onSubmit} />
     </div>
 
 
     )
 }
 
-const mapStatetoProps=(state: AppStoreType)=>({
-isAuth: state.loginData.isAuth
+const mapStatetoProps = (state: AppStoreType) => ({
+    isAuth: state.loginData.isAuth
 })
 
-export const LoginContainer = connect(mapStatetoProps, {logOUTThunk, logINThunk})(Login)
+export const LoginContainer = connect(mapStatetoProps, { logOUTThunk, logINThunk })(Login)
 
 
 type FormDataType = {
     email: string
-    password:string
-    rememberMe:boolean
+    password: string
+    rememberMe: boolean
 }
 
-export const LoginForm = (props:InjectedFormProps<FormDataType>) => {
+export const LoginForm = (props: InjectedFormProps<FormDataType>) => {
 
     return (
         <form onSubmit={props.handleSubmit} className={s.formContainer} >
@@ -57,12 +58,12 @@ export const LoginForm = (props:InjectedFormProps<FormDataType>) => {
             <div>
                 <button className={s.formButton} >log in</button>
             </div>
-            <div className={s.testDataContainer}>Enter test data to log in : 
-                <p>Email: free@samuraijs.com</p>    
-                <p>Password: free</p>    
-                </div>
+            <div className={s.testDataContainer}>Enter test data to log in :
+                <p>Email: free@samuraijs.com</p>
+                <p>Password: free</p>
+            </div>
         </form>
     )
 }
 
-const LoginReduxForm = reduxForm<FormDataType>({form:'login'})(LoginForm)
+const LoginReduxForm = reduxForm<FormDataType>({ form: 'login' })(LoginForm)

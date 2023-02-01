@@ -5,9 +5,9 @@ type ProfileStatusType = {
     updateStatusThunk: (text: string) => void
 }
 
-export const ProfileStatusWithHook = (props: ProfileStatusType) => {
+export const ProfileStatusWithHook = ({ status, updateStatusThunk }: ProfileStatusType) => {
     const [editMode, setEditMode] = useState(false)
-    const [status, setStatus] = useState(props.status)
+    const [localStatus, setStatus] = useState(status)
 
 
     const activateEditMode = () => {
@@ -15,11 +15,11 @@ export const ProfileStatusWithHook = (props: ProfileStatusType) => {
     }
     const diactivateEditMode = () => {
         setEditMode(false)
-        props.updateStatusThunk(status)
+        updateStatusThunk(localStatus)
     }
     useEffect(() => {
-        setStatus(props.status)
-    }, [props.status])
+        setStatus(status)
+    }, [status])
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setStatus(e.currentTarget.value)
     }

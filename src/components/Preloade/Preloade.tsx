@@ -1,4 +1,3 @@
-import loading from './loading.gif'
 import s from './Preload.module.css'
 
 export const Preload = ()=>{
