@@ -65,13 +65,14 @@ margin-right: 50px;
 }
 .pageSwitch{
     color: rgb(243, 140, 38);
-    width: 350px;
+    width: 370px;
     margin: 50px auto;
 
 }
 .selectedPage{
     font-weight: bold;
     font-size: larger;
+    cursor: pointer;
 }
 .follow:disabled{
     color:rgb(60, 55, 52);
@@ -91,5 +92,10 @@ margin-right: 50px;
     height: 20px;
     margin-left: 5px;
     font-weight: bolder;
-    color:rgb(216, 103, 4)
+    color:rgb(216, 103, 4);
+    cursor: pointer;
+}
+
+.numberPage{
+    cursor: pointer;
 }

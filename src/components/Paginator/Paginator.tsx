@@ -32,7 +32,7 @@ export const Paginator = (props: PaginatorPropsType) => {
 
         <div className={s.pageSwitch}>
             {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)} className={s.paginatorButton}>BACK</button>}
-            {pages.filter(p => p >= leftBorderPage && p <= rightBorderPage).map((p, index) => <span key={index} onClick={() => props.choosePage(p)} className={props.currentPage === p ? s.selectedPage : ''} > {p} </span>)}
+            {pages.filter(p => p >= leftBorderPage && p <= rightBorderPage).map((p, index) => <span key={index} onClick={() => props.choosePage(p)} className={props.currentPage === p ? s.selectedPage : s.numberPage} > {p} </span>)}
             {portionNumber < portionCount && <button onClick={() => setPortionNumber(portionNumber + 1)} className={s.paginatorButton}>NEXT</button>}
         </div>
     )

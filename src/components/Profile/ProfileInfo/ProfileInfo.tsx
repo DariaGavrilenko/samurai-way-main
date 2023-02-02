@@ -71,10 +71,10 @@ type InfoContainerType = {
 const InfoContainer = ({ profileInfo, turnOnEditMode, isOwner }: InfoContainerType) => {
     return (
         <div className={s.information}>
-            <span> <b>Name:</b>  {profileInfo?.fullName}</span>
-            <span> <b>About me:</b>  {profileInfo?.aboutMe}</span>
-            <span> <b>Work status:</b>  {!profileInfo?.lookingForAJob ? 'looking for job' : ' work now'}</span>
-            <span> <b>A job description:</b>   {profileInfo?.lookingForAJobDescription} </span>
+            <span  className={s.title}> <b>Name:</b>  {profileInfo?.fullName}</span>
+            <span  className={s.title}> <b>About me:</b>  {profileInfo?.aboutMe}</span>
+            <span  className={s.title}> <b>Work status:</b>  {!profileInfo?.lookingForAJob ? 'looking for job' : ' work now'}</span>
+            <span  className={s.title}> <b>A job description:</b>   {profileInfo?.lookingForAJobDescription} </span>
             <div> <b>My contacts:</b>
                 {Object.keys(profileInfo?.contacts ? profileInfo?.contacts : {}).map(key => <ContactsInfo contactValue={profileInfo?.contacts && profileInfo.contacts} contactKey={key} key={key}/>)}
             </div>

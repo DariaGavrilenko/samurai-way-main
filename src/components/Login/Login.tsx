@@ -46,7 +46,7 @@ export const LoginForm = (props: InjectedFormProps<FormDataType>) => {
                 <Field placeholder="Login" name="email" component={Input} validate={[required]} className={s.formInput} />
             </div>
             <div>
-                <Field placeholder="Passsword" name="password" component={Input} validate={[required]} type={'password'} className={s.formInput} />
+                <Field placeholder="Password" name="password" component={Input} validate={[required]} type={'password'} className={s.formInput} />
             </div>
             <div>
                 <Field type={'checkbox'} name='rememberMe' component={'input'} /> remember me
