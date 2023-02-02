@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, Form, InjectedFormProps, reduxForm } from 'redux-form'
+import { Field, Form, InjectedFormProps, reduxForm, reset } from 'redux-form'
 import { profilesPropsType } from '../../../redux/profileReducer'
 import { maxLenghtCreator, required } from '../../../utils/validation'
 import { Textarea } from '../../FormsControls/FormsControls'
@@ -9,12 +9,14 @@ import Post from './Post/Post'
 type MyPostsType = {
     addPost: (text: string) => void
     state: profilesPropsType
+    resetForm:()=>void
 }
 
-const MyPosts = ({ state, addPost }: MyPostsType) => {
+const MyPosts = ({ state, addPost, resetForm }: MyPostsType) => {
 
     const onClickHandler = (formData: MyPostFormType) => {
         addPost(formData.myPostForm)
+        resetForm()
     }
 
 

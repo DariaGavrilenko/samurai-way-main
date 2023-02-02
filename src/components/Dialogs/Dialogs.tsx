@@ -11,15 +11,15 @@ import DialogsNames from './DialogsName/DialogName'
 type DialogsType = {
     state: dialogPropsType
     addMessage: (text: string) => void
-
+    resetForm:()=>void
 }
 
 
-function Dialogs({ state, addMessage }: DialogsType) {
+function Dialogs({ state, addMessage, resetForm }: DialogsType) {
 
     const onClickHandler = (formData: MessageFormType) => {
         addMessage(formData.messageForm)
-
+        resetForm()
     }
 
     const DialogsNamesRendering = state.DialogNamesData?.map((dn, index) => <DialogsNames img={dn.img} name={dn.name} id={dn.id} key={index} />)
