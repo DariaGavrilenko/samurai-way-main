@@ -1,8 +1,5 @@
-import { ChangeEvent, useRef, useState } from 'react'
-import { Field, InjectedFormProps, reduxForm } from 'redux-form'
+import {  useState } from 'react'
 import { profileType } from '../../../redux/profileReducer'
-import { required } from '../../../utils/validation'
-import { Input, Textarea } from '../../FormsControls/FormsControls'
 import ChangeAvatarInput from './ChangeAvatarInput'
 import InfoContainerForm, { InfoContainerFormType } from './InfoContainerForm'
 import s from './ProfileInfo.module.css'
@@ -52,6 +49,8 @@ function ProfileInfo({ isOwner, status, profileInfo, updateStatusThunk, changeAv
         </div>
     )
 }
+
+
 type ContactsType = {
     contactKey: string
     contactValue: any
@@ -61,6 +60,8 @@ const ContactsInfo = ({ contactKey, contactValue }: ContactsType) => {
         <div><b>{contactKey}</b>:{contactValue[contactKey]}</div>
     )
 }
+
+
 
 type InfoContainerType = {
     profileInfo: profileType | null | undefined
@@ -82,26 +83,5 @@ const InfoContainer = ({ profileInfo, turnOnEditMode, isOwner }: InfoContainerTy
         </div>
     )
 }
-
-
-
-
-// type FormDataType = {
-//     contactKey: string
-//     contactValue:any
-//     handleSubmit?:()=>void
-// }
-
-// const ChangeContactsInfo = ({contactKey,handleSubmit}:) =>{
-//     return(
-//        // <div><b>{contactKey}</b>:{contactValue[contactKey]}</div>
-//         <form onSubmit={handleSubmit} className={s.formContainer} >
-//             <div>
-//                 <Field placeholder={contactKey} name={contactKey} component={Input} validate={[]} />
-//             </div>
-//             </form>
-//     )
-// } 
-// const ContactsReduxForm = reduxForm<FormDataType>({ form: 'contacts' })(ChangeContactsInfo)
 
 export default ProfileInfo

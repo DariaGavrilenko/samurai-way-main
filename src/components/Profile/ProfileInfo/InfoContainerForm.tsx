@@ -1,10 +1,6 @@
-import { OmitProps } from "antd/lib/transfer/ListBody"
-import { spawn } from "child_process"
-import { ReactNode } from "react"
 import { Field, InjectedFormProps, reduxForm } from "redux-form"
-import { profileType } from "../../../redux/profileReducer"
 import { required } from "../../../utils/validation"
-import { Input, Textarea } from "../../FormsControls/FormsControls"
+import { Input} from "../../FormsControls/FormsControls"
 import s from './ProfileInfo.module.css'
 
 export type InfoContainerFormType = {
